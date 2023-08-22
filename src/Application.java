@@ -1,19 +1,19 @@
 import java.awt.*;
 import java.awt.event.*;
 class Application extends WindowAdapter implements ActionListener{
-    Frame f;
-    Label l1;
-    Button b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;
-    Button badd,bsub,bmult,bdiv,bmod,bcalc,bclr,bpts,bneg,bback;
+    Frame frame;
+    Label label;
+    Button b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, badd, bsub, bmult, bdiv, bmod, bcalc, bclr, bpts, bneg, bback;
     double xd;
+    String z,zt;
     double num1,num2,check;
 
     Application(){
-        f= new Frame("MY CALCULATOR");
+        frame = new Frame("MY CALCULATOR");
 // INSTANTIATING COMPONENETS
-        l1=new Label();
-        l1.setBackground(Color.LIGHT_GRAY);
-        l1.setBounds(50,50,260,60);
+        label =new Label();
+        label.setBackground(Color.LIGHT_GRAY);
+        label.setBounds(50,50,260,60);
 
 
         b1=new Button("1");
@@ -82,158 +82,163 @@ class Application extends WindowAdapter implements ActionListener{
         bcalc.addActionListener(this);
         bclr.addActionListener(this);
 
-        f.addWindowListener(this);
+        frame.addWindowListener(this);
 //ADDING TO FRAME
-        f.add(l1);
-        f.add(b1); f.add(b2); f.add(b3); f.add(b4); f.add(b5);f.add(b6); f.add(b7); f.add(b8);f.add(b9);f.add(b0);
+        frame.add(label);
+        frame.add(b1); frame.add(b2); frame.add(b3); frame.add(b4); frame.add(b5);
+        frame.add(b6); frame.add(b7); frame.add(b8);
+        frame.add(b9);
+        frame.add(b0);
 
-        f.add(badd); f.add(bsub); f.add(bmod); f.add(bmult); f.add(bdiv); f.add(bmod);f.add(bcalc);
+        frame.add(badd); frame.add(bsub); frame.add(bmod); frame.add(bmult); frame.add(bdiv); frame.add(bmod);
+        frame.add(bcalc);
 
-        f.add(bclr); f.add(bpts);f.add(bneg); f.add(bback);
+        frame.add(bclr); frame.add(bpts);
+        frame.add(bneg); frame.add(bback);
 
-        f.setSize(360,500);
-        f.setLayout(null);
-        f.setVisible(true);
+        frame.setSize(360,500);
+        frame.setLayout(null);
+        frame.setVisible(true);
     }
     //FOR CLOSING THE WINDOW
     public void windowClosing(WindowEvent e) {
-        f.dispose();
+        frame.dispose();
     }
 
     public void actionPerformed(ActionEvent e){
-        String z,zt;
+
         //NUMBER BUTTON
         if(e.getSource()==b1){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"1";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b2){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"2";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b3){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"3";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b4){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"4";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b5){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"5";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b6){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"6";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b7){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"7";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b8){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"8";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b9){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"9";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==b0){
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+"0";
-            l1.setText(z);
+            label.setText(z);
         }
 
         if(e.getSource()==bpts){  //ADD DECIMAL PTS
-            zt=l1.getText();
+            zt= label.getText();
             z=zt+".";
-            l1.setText(z);
+            label.setText(z);
         }
         if(e.getSource()==bneg){ //FOR NEGATIVE
-            zt=l1.getText();
+            zt= label.getText();
             z="-"+zt;
-            l1.setText(z);
+            label.setText(z);
         }
 
         if(e.getSource()==bback){  // FOR  BACKSPACE
-            zt=l1.getText();
+            zt= label.getText();
             try{
                 z=zt.substring(0, zt.length()-1);
             }catch(StringIndexOutOfBoundsException f){return;}
-            l1.setText(z);
+            label.setText(z);
         }
         //AIRTHMETIC BUTTON
         if(e.getSource()==badd){                     //FOR ADDITION
             try{
-                num1=Double.parseDouble(l1.getText());
+                num1=Double.parseDouble(label.getText());
             }catch(NumberFormatException f){
-                l1.setText("Invalid Format");
+                label.setText("Invalid Format");
                 return;
             }
             z="";
-            l1.setText(z);
+            label.setText(z);
             check=1;
         }
         if(e.getSource()==bsub){                    //FOR SUBTRACTION
             try{
-                num1=Double.parseDouble(l1.getText());
+                num1=Double.parseDouble(label.getText());
             }catch(NumberFormatException f){
-                l1.setText("Invalid Format");
+                label.setText("Invalid Format");
                 return;
             }
             z="";
-            l1.setText(z);
+            label.setText(z);
             check=2;
         }
         if(e.getSource()==bmult){                   //FOR MULTIPLICATION
             try{
-                num1=Double.parseDouble(l1.getText());
+                num1=Double.parseDouble(label.getText());
             }catch(NumberFormatException f){
-                l1.setText("Invalid Format");
+                label.setText("Invalid Format");
                 return;
             }
             z="";
-            l1.setText(z);
+            label.setText(z);
             check=3;
         }
         if(e.getSource()==bdiv){                   //FOR DIVISION
             try{
-                num1=Double.parseDouble(l1.getText());
+                num1=Double.parseDouble(label.getText());
             }catch(NumberFormatException f){
-                l1.setText("Invalid Format");
+                label.setText("Invalid Format");
                 return;
             }
             z="";
-            l1.setText(z);
+            label.setText(z);
             check=4;
         }
         if(e.getSource()==bmod){                  //FOR MOD/REMAINDER
             try{
-                num1=Double.parseDouble(l1.getText());
+                num1=Double.parseDouble(label.getText());
             }catch(NumberFormatException f){
-                l1.setText("Invalid Format");
+                label.setText("Invalid Format");
                 return;
             }
             z="";
-            l1.setText(z);
+            label.setText(z);
             check=5;
         }
         //RESULT BUTTON
         if(e.getSource()==bcalc){
             try{
-                num2=Double.parseDouble(l1.getText());
+                num2=Double.parseDouble(label.getText());
             }catch(Exception f){
-                l1.setText("ENTER NUMBER FIRST ");
+                label.setText("ENTER NUMBER FIRST ");
                 return;
             }
             if(check==1)
@@ -246,7 +251,7 @@ class Application extends WindowAdapter implements ActionListener{
                 xd =num1/num2;
             if(check==5)
                 xd =num1%num2;
-            l1.setText(String.valueOf(xd));
+            label.setText(String.valueOf(xd));
         }
         //FOR CLEARING THE LABEL and Memory
         if(e.getSource()==bclr){
@@ -255,7 +260,7 @@ class Application extends WindowAdapter implements ActionListener{
             check=0;
             xd=0;
             z="";
-            l1.setText(z);
+            label.setText(z);
         }
 
     }
